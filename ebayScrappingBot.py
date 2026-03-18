@@ -6,13 +6,20 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import pandas as pd
+import os
 
 def save_to_excel(data, nome):
     df = pd.DataFrame(data)
     headers = ['Produto', 'Preço', 'Link']
-    df.to_excel(nome, header= headers, index=False)
-    print("🎉 SUCESSO! Arquivo salvo na pasta do seu projeto!")
 
+    # Substitui os espaços por _ para o nome do arquivo
+    nome_arquivo = f"{nome.replace(' ', '_')}_Scrapper.xlsx"
+    #Garante que a pasta 'Resultados' exista (se não existir, o Python cria)
+    os.makedirs("Resultados", exist_ok=True)
+
+    caminho_completo = os.path.join("Resultados", nome_arquivo)
+    df.to_excel(caminho_completo, header=headers, index=False)
+    print(f"🎉 SUCESSO! Arquivo salvo em: {caminho_completo}")
 
 def clean_data(lista_produtos):
     clean_data = []
@@ -68,7 +75,10 @@ def print_produtos(lista_limpa_produtos):
 
 def bot_scrapper(produto):
     options = Options()
-    options.add_argument('--start-maximized')
+    # utilize caso o bot esteja visivel
+    #options.add_argument('--start-maximized')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument('--headless')
     driver = webdriver.Chrome(options=options)
 
     try:
@@ -103,7 +113,7 @@ def bot_scrapper(produto):
         lista_limpa_produtos = clean_data(lista_produtos)
 
         print_produtos(lista_limpa_produtos)
-        save_to_excel(lista_limpa_produtos, f"{produto}_Scrapper.xlsx")
+        save_to_excel(lista_limpa_produtos, f"{produto}")
 
     except Exception as erro:
         print(f"Um erro ocorreu: {erro}")
