@@ -116,7 +116,13 @@ def bot_scrapper(produto):
         save_to_excel(lista_limpa_produtos, f"{produto}")
 
     except Exception as erro:
-        print(f"Um erro ocorreu: {erro}")
+        print(f"Um erro inesperado ocorreu: {erro}")
+
+        os.makedirs('errors', exist_ok=True)
+        caminho_foto = os.path.join('errors', 'evidencia_erro.png')
+        driver.save_screenshot(caminho_foto)
+
+        print(f"Uma foto da tela no momento do erro foi salva em: {caminho_foto}")
 
     finally:
         driver.quit()
