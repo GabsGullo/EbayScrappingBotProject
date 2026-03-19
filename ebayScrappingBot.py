@@ -63,9 +63,9 @@ def print_produtos(lista_limpa_produtos):
     for produto in lista_limpa_produtos[:5]:
         try:
 
-            print(f"🎮 Produto: {produto['Console']}")
-            print(f"💰 Preço: {produto['Preço']}")
-            print(f"🔗 Link: {produto['Link da Oferta']}")
+            print(f"Produto: {produto['Console']}")
+            print(f"Preço: {produto['Preço']}")
+            print(f"Link: {produto['Link da Oferta']}")
             print("-" * 50)
 
         except Exception as e:
@@ -100,16 +100,16 @@ def bot_scrapper(produto):
         #Produtos existem?
         aviso_nao_encontrado = driver.find_elements(By.CSS_SELECTOR, ".srp-save-null-search__heading")
         if len(aviso_nao_encontrado) > 0:
-            print(f"❌ Nenhum resultado exato encontrado para '{produto}'.")
-            print("Encerrando o bot pacificamente... 👋")
+            print(f" Nenhum resultado exato encontrado para '{produto}'.")
+            print("Encerrando o bot pacificamente...")
             return  # O 'return' faz o bot encerrar
 
-        print("✅ Produtos encontrados! Continuando o processo...")
+        print("Produtos encontrados! Continuando o processo...")
 
-        print("🛒 Extraindo produtos...")
+        print("Extraindo produtos...")
         lista_produtos = driver.find_elements(By.CSS_SELECTOR, ".s-card")
 
-        print("🛒 Produtos extraidos!")
+        print("Produtos extraidos!")
         lista_limpa_produtos = clean_data(lista_produtos)
 
         print_produtos(lista_limpa_produtos)
