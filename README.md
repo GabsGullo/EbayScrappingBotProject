@@ -36,3 +36,13 @@ Automação web desenvolvida em **Python** com **Selenium** para extração inte
 2. **Execute o script:**
    ```bash
    python ebayScrappingBot.py
+
+## ⚠️ Aviso Legal (Disclaimer)
+
+Este projeto foi desenvolvido **exclusivamente para fins educacionais** e de demonstração de conhecimentos em Python, Selenium e Automação Web. 
+
+* **Uso Acadêmico:** O código não possui fins comerciais, lucrativos ou de concorrência. Seu único objetivo é compor um portfólio de estudos.
+* **Scraping Ético:** O script foi projetado com intervalos de tempo (`time.sleep()`) entre as requisições para evitar qualquer tipo de sobrecarga nos servidores da plataforma, respeitando as diretrizes básicas de responsabilidade na web.
+* **Isenção de Responsabilidade:** Não me responsabilizo pelo mau uso, modificação ou execução abusiva deste script por terceiros de forma que viole os Termos de Serviço (ToS) do eBay ou de qualquer outra plataforma.
+
+Recomenda-se fortemente aos usuários que fizerem um *fork* ou clone deste repositório que revisem o arquivo `robots.txt` dos sites alvo e ajam com bom senso ao realizar extração de dados.
